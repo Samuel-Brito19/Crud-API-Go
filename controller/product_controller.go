@@ -2,17 +2,20 @@ package controller
 
 import (
 	"go-api/model"
+	"go-api/usecase"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 type prodcutController struct {
-
+	productUseCase usecase.ProductUseCase
 }
 
-func NewProductController() prodcutController {
-	return prodcutController{}
+func NewProductController(usecase usecase.ProductUseCase) prodcutController {
+	return prodcutController{
+		productUseCase: usecase,
+	}
 }
 
 func(p *prodcutController) GetProducts(ctx *gin.Context) {
